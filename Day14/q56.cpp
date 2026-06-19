@@ -1,0 +1,38 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    vector<int> arr(n);
+
+    for(int i = 0; i < n; i++)
+        cin >> arr[i];
+
+    cout << "Duplicate Elements: ";
+
+    for(int i = 0; i < n; i++) {
+        bool printed = false;
+
+        for(int k = 0; k < i; k++) {
+            if(arr[i] == arr[k]) {
+                printed = true;
+                break;
+            }
+        }
+
+        if(printed)
+            continue;
+
+        for(int j = i + 1; j < n; j++) {
+            if(arr[i] == arr[j]) {
+                cout << arr[i] << " ";
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
