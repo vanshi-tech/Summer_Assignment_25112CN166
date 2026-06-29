@@ -1,39 +1,29 @@
-// Q102 - Compare Two Strings
+// Q102 - Voting Eligibility System
 
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    string str1, str2;
+    int age;
+    char citizen;
 
-    cout << "Enter first string: ";
-    getline(cin, str1);
+    cout << "========== Voting Eligibility System ==========\n";
 
-    cout << "Enter second string: ";
-    getline(cin, str2);
+    cout << "Enter your age: ";
+    cin >> age;
 
-    if (str1.length() != str2.length())
+    cout << "Are you an Indian Citizen? (Y/N): ";
+    cin >> citizen;
+
+    if ((age >= 18) && (citizen == 'Y' || citizen == 'y'))
     {
-        cout << "Strings are Not Equal";
-        return 0;
+        cout << "\nCongratulations! You are eligible to vote.";
     }
-
-    bool equal = true;
-
-    for (int i = 0; str1[i] != '\0'; i++)
-    {
-        if (str1[i] != str2[i])
-        {
-            equal = false;
-            break;
-        }
-    }
-
-    if (equal)
-        cout << "Strings are Equal";
     else
-        cout << "Strings are Not Equal";
+    {
+        cout << "\nSorry! You are not eligible to vote.";
+    }
 
     return 0;
 }

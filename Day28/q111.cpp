@@ -1,33 +1,61 @@
-// Q111 - Find Smallest Word
-
+// Q111 - Ticket Booking System
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    string str, word = "", smallest = "";
+    int totalSeats = 50;
+    int bookedSeats = 0;
+    int choice, seats;
 
-    cout << "Enter a sentence: ";
-    getline(cin, str);
-
-    str += ' ';
-
-    for (int i = 0; str[i] != '\0'; i++)
+    do
     {
-        if (str[i] != ' ')
-        {
-            word += str[i];
-        }
-        else
-        {
-            if (smallest == "" || word.length() < smallest.length())
-                smallest = word;
+        cout << "\n========== Ticket Booking System ==========\n";
+        cout << "1. Book Ticket\n";
+        cout << "2. Check Available Seats\n";
+        cout << "3. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
 
-            word = "";
-        }
-    }
+        switch (choice)
+        {
+        case 1:
+            cout << "Enter Number of Seats to Book: ";
+            cin >> seats;
 
-    cout << "Smallest Word = " << smallest;
+            if (seats <= 0)
+            {
+                cout << "Invalid Number of Seats!\n";
+            }
+            else if (bookedSeats + seats <= totalSeats)
+            {
+                bookedSeats += seats;
+                cout << "Booking Successful!\n";
+                cout << "Booked Seats: " << bookedSeats << endl;
+                cout << "Available Seats: " << totalSeats - bookedSeats << endl;
+            }
+            else
+            {
+                cout << "Sorry! Only " << totalSeats - bookedSeats
+                     << " Seats are Available.\n";
+            }
+            break;
+
+        case 2:
+            cout << "\nTotal Seats     : " << totalSeats << endl;
+            cout << "Booked Seats    : " << bookedSeats << endl;
+            cout << "Available Seats : " << totalSeats - bookedSeats << endl;
+            break;
+
+        case 3:
+            cout << "\nThank You for Using Ticket Booking System!\n";
+            break;
+
+        default:
+            cout << "Invalid Choice!\n";
+        }
+
+    } while (choice != 3);
 
     return 0;
 }

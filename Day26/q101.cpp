@@ -1,21 +1,44 @@
-// Q101 - Copy One String to Another
+// Q101 - Number Guessing Game
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int main()
 {
-    string str1, str2 = "";
+    srand(time(0));
 
-    cout << "Enter a string: ";
-    getline(cin, str1);
+    int number = rand() % 100 + 1;
+    int guess, attempts = 0;
 
-    for (int i = 0; str1[i] != '\0'; i++)
+    cout << "=====================================\n";
+    cout << "      NUMBER GUESSING GAME\n";
+    cout << "=====================================\n";
+    cout << "Guess a number between 1 and 100\n";
+
+    do
     {
-        str2 += str1[i];
-    }
+        cout << "\nEnter your guess: ";
+        cin >> guess;
+        attempts++;
 
-    cout << "Copied String = " << str2;
+        if (guess > number)
+        {
+            cout << "Too High! Try Again.\n";
+        }
+        else if (guess < number)
+        {
+            cout << "Too Low! Try Again.\n";
+        }
+        else
+        {
+            cout << "\nCongratulations!\n";
+            cout << "You guessed the correct number.\n";
+            cout << "Total Attempts = " << attempts << endl;
+        }
+
+    } while (guess != number);
 
     return 0;
 }

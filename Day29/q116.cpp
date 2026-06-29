@@ -1,36 +1,103 @@
-// Q 116 - Case Insensitive String Comparison
+// Q116 - Inventory Management System
+
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    string str1, str2;
+    int n, choice, searchId;
+    int productId[100], quantity[100];
+    string productName[100];
+    float price[100];
 
-    cout << "Enter first string: ";
-    getline(cin, str1);
+    cout << "========== Inventory Management System ==========\n";
+    cout << "Enter Number of Products: ";
+    cin >> n;
 
-    cout << "Enter second string: ";
-    getline(cin, str2);
+    cin.ignore();
 
-    if (str1.length() != str2.length())
+    // Input Product Details
+    for (int i = 0; i < n; i++)
     {
-        cout << "Strings are Not Equal";
-        return 0;
+        cout << "\nEnter Details of Product " << i + 1 << endl;
+
+        cout << "Product ID: ";
+        cin >> productId[i];
+        cin.ignore();
+
+        cout << "Product Name: ";
+        getline(cin, productName[i]);
+
+        cout << "Price: ";
+        cin >> price[i];
+
+        cout << "Quantity: ";
+        cin >> quantity[i];
+        cin.ignore();
     }
 
-    for (int i = 0; str1[i] != '\0'; i++)
+    do
     {
-        if (str1[i] >= 'A' && str1[i] <= 'Z')
-            str1[i] += 32;
+        cout << "\n========== MENU ==========\n";
+        cout << "1. Display Products\n";
+        cout << "2. Search Product by ID\n";
+        cout << "3. Exit\n";
+        cout << "Enter your choice: ";
+        cin >> choice;
 
-        if (str2[i] >= 'A' && str2[i] <= 'Z')
-            str2[i] += 32;
-    }
+        switch (choice)
+        {
+        case 1:
+            cout << "\n========== PRODUCT LIST ==========\n";
+            cout << "ID\tName\t\tPrice\tQuantity\n";
 
-    if (str1 == str2)
-        cout << "Strings are Equal (Case-Insensitive)";
-    else
-        cout << "Strings are Not Equal";
+            for (int i = 0; i < n; i++)
+            {
+                cout << productId[i] << "\t"
+                     << productName[i] << "\t\t"
+                     << price[i] << "\t"
+                     << quantity[i] << endl;
+            }
+            break;
+
+        case 2:
+        {
+            bool found = false;
+
+            cout << "Enter Product ID to Search: ";
+            cin >> searchId;
+
+            for (int i = 0; i < n; i++)
+            {
+                if (productId[i] == searchId)
+                {
+                    cout << "\nProduct Found!\n";
+                    cout << "Product Name : " << productName[i] << endl;
+                    cout << "Price        : " << price[i] << endl;
+                    cout << "Quantity     : " << quantity[i] << endl;
+
+                    found = true;
+                    break;
+                }
+            }
+
+            if (!found)
+            {
+                cout << "Product Not Found!\n";
+            }
+
+            break;
+        }
+
+        case 3:
+            cout << "\nThank You!\n";
+            break;
+
+        default:
+            cout << "Invalid Choice!\n";
+        }
+
+    } while (choice != 3);
 
     return 0;
-}
+5}

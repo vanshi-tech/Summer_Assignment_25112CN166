@@ -1,29 +1,43 @@
-// Q105 - Count Digits, Alphabets and Special Characters
+// Q105 - Student Record Management System
 
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    string str;
-    int alphabets = 0, digits = 0, special = 0;
+    int n;
 
-    cout << "Enter a string: ";
-    getline(cin, str);
+    cout << "Enter Number of Students: ";
+    cin >> n;
 
-    for (int i = 0; str[i] != '\0'; i++)
+    int roll[100];
+    string name[100];
+    float marks[100];
+
+    for (int i = 0; i < n; i++)
     {
-        if ((str[i] >= 'A' && str[i] <= 'Z') || (str[i] >= 'a' && str[i] <= 'z'))
-            alphabets++;
-        else if (str[i] >= '0' && str[i] <= '9')
-            digits++;
-        else if (str[i] != ' ')
-            special++;
+        cout << "\nEnter Details of Student " << i + 1 << endl;
+
+        cout << "Roll Number: ";
+        cin >> roll[i];
+
+        cin.ignore();
+
+        cout << "Name: ";
+        getline(cin, name[i]);
+
+        cout << "Marks: ";
+        cin >> marks[i];
     }
 
-    cout << "Alphabets = " << alphabets << endl;
-    cout << "Digits = " << digits << endl;
-    cout << "Special Characters = " << special;
+    cout << "\n========== STUDENT RECORD ==========\n";
+
+    cout << "Roll\tName\t\tMarks\n";
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << roll[i] << "\t" << name[i] << "\t\t" << marks[i] << endl;
+    }
 
     return 0;
 }

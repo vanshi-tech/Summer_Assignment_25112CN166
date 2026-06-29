@@ -1,37 +1,47 @@
-// Q109 - Count Words, Characters and Lines
+// Q109 - Library Management System
 
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    string str;
+    int n;
 
-    cout << "Enter a sentence: ";
-    getline(cin, str);
+    cout << "========== Library Management System ==========\n";
+    cout << "Enter Number of Books: ";
+    cin >> n;
 
-    int words = 1, characters = 0, lines = 1;
+    int bookId[100];
+    string bookName[100];
+    string author[100];
 
-    if (str.length() == 0)
+    cin.ignore();
+
+    for (int i = 0; i < n; i++)
     {
-        words = 0;
-        lines = 0;
+        cout << "\nBook " << i + 1 << endl;
+
+        cout << "Book ID: ";
+        cin >> bookId[i];
+        cin.ignore();
+
+        cout << "Book Name: ";
+        getline(cin, bookName[i]);
+
+        cout << "Author Name: ";
+        getline(cin, author[i]);
     }
 
-    for (int i = 0; str[i] != '\0'; i++)
+    cout << "\n========== BOOK RECORD ==========\n";
+
+    cout << "ID\tBook Name\t\tAuthor\n";
+
+    for (int i = 0; i < n; i++)
     {
-        characters++;
-
-        if (str[i] == ' ')
-            words++;
-
-        if (str[i] == '\n')
-            lines++;
+        cout << bookId[i] << "\t"
+             << bookName[i] << "\t\t"
+             << author[i] << endl;
     }
-
-    cout << "Characters = " << characters << endl;
-    cout << "Words = " << words << endl;
-    cout << "Lines = " << lines << endl;
 
     return 0;
 }

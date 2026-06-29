@@ -1,22 +1,42 @@
-// Q106 - Check Whether Two Strings are Equal
+// Q106 - Employee Management System
 
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    string str1, str2;
+    int n;
 
-    cout << "Enter first string: ";
-    getline(cin, str1);
+    cout << "Enter Number of Employees: ";
+    cin >> n;
 
-    cout << "Enter second string: ";
-    getline(cin, str2);
+    int id[100];
+    string name[100];
+    float salary[100];
 
-    if (str1 == str2)
-        cout << "Strings are Equal";
-    else
-        cout << "Strings are Not Equal";
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\nEnter Details of Employee " << i + 1 << endl;
+
+        cout << "Employee ID: ";
+        cin >> id[i];
+
+        cin.ignore();
+
+        cout << "Employee Name: ";
+        getline(cin, name[i]);
+
+        cout << "Salary: ";
+        cin >> salary[i];
+    }
+
+    cout << "\n========== EMPLOYEE RECORD ==========\n";
+    cout << "ID\tName\t\tSalary\n";
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << id[i] << "\t" << name[i] << "\t\t" << salary[i] << endl;
+    }
 
     return 0;
 }

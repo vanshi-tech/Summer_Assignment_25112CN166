@@ -1,29 +1,40 @@
-// Q112 - Check String Contains Only Digits
+// Q112 - Contact Management System
 
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    string str;
-    bool digitsOnly = true;
+    int n;
 
-    cout << "Enter a string: ";
-    cin >> str;
+    cout << "========== Contact Management System ==========\n";
+    cout << "Enter Number of Contacts: ";
+    cin >> n;
 
-    for (int i = 0; str[i] != '\0'; i++)
+    string name[100];
+    string phone[100];
+
+    cin.ignore();
+
+    for (int i = 0; i < n; i++)
     {
-        if (!(str[i] >= '0' && str[i] <= '9'))
-        {
-            digitsOnly = false;
-            break;
-        }
+        cout << "\nEnter Details of Contact " << i + 1 << endl;
+
+        cout << "Name: ";
+        getline(cin, name[i]);
+
+        cout << "Phone Number: ";
+        getline(cin, phone[i]);
     }
 
-    if (digitsOnly)
-        cout << "String contains only digits.";
-    else
-        cout << "String contains other characters also.";
+    cout << "\n========== CONTACT LIST ==========\n";
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << "\nContact " << i + 1 << endl;
+        cout << "Name         : " << name[i] << endl;
+        cout << "Phone Number : " << phone[i] << endl;
+    }
 
     return 0;
 }

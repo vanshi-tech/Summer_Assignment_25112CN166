@@ -1,37 +1,63 @@
-// Q117 - Count Occurrences of a Word
+// Q117 - Student Record System Using Arrays & Strings
 
 #include <iostream>
 using namespace std;
 
 int main()
 {
-    string sentence, word, temp = "";
-    int count = 0;
+    int n;
 
-    cout << "Enter a sentence: ";
-    getline(cin, sentence);
+    cout << "========== STUDENT RECORD SYSTEM ==========\n";
+    cout << "Enter Number of Students: ";
+    cin >> n;
 
-    cout << "Enter the word to search: ";
-    cin >> word;
+    int roll[100];
+    string name[100];
+    float marks[100];
 
-    sentence += ' ';
+    cin.ignore();
 
-    for (int i = 0; sentence[i] != '\0'; i++)
+    // Input
+    for (int i = 0; i < n; i++)
     {
-        if (sentence[i] != ' ')
-        {
-            temp += sentence[i];
-        }
-        else
-        {
-            if (temp == word)
-                count++;
+        cout << "\nStudent " << i + 1 << endl;
 
-            temp = "";
-        }
+        cout << "Roll Number: ";
+        cin >> roll[i];
+        cin.ignore();
+
+        cout << "Name: ";
+        getline(cin, name[i]);
+
+        cout << "Marks: ";
+        cin >> marks[i];
+        cin.ignore();
     }
 
-    cout << "Occurrences = " << count;
+    // Display
+    cout << "\n========== STUDENT RECORD ==========\n";
+    cout << "Roll\tName\t\tMarks\n";
+
+    for (int i = 0; i < n; i++)
+    {
+        cout << roll[i] << "\t"
+             << name[i] << "\t\t"
+             << marks[i] << endl;
+    }
+
+    // Find Topper
+    int topper = 0;
+
+    for (int i = 1; i < n; i++)
+    {
+        if (marks[i] > marks[topper])
+            topper = i;
+    }
+
+    cout << "\n========== TOPPER ==========\n";
+    cout << "Roll Number : " << roll[topper] << endl;
+    cout << "Name        : " << name[topper] << endl;
+    cout << "Marks       : " << marks[topper] << endl;
 
     return 0;
 }
